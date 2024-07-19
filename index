@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Play and Close</title>
+    <style>
+        /* Hide the audio player controls */
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <audio id="audio" autoplay>
+        <source src="https://raw.githubusercontent.com/sidcredible/sher-audio/main/Sherr.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var audio = document.getElementById('audio');
+
+            // Close the window when audio ends
+            audio.addEventListener('ended', function() {
+                window.close();
+            });
+
+            // Optional: Handle cases where auto-closing the window might not work
+            // (e.g., if the window was not opened by script)
+            setTimeout(function() {
+                if (!audio.ended) {
+                    window.close();
+                }
+            }, 10000); // Adjust timeout as needed
+        });
+    </script>
+</body>
+</html>
